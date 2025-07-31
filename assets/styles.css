@@ -1,0 +1,41 @@
+.comic-img {
+    height: 250px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .btn {
+    margin-top: auto;
+}
+
+.custom-width {
+    max-width: 300px;
+}
+
+.links a {
+    color: #f8f9fa;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
