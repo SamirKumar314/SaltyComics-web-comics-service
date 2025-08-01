@@ -52,7 +52,7 @@ function sendVerificationEmail(string $email, string $code, string $type, int $c
 
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8\r\n";
-    $headers .= "From: XKCD Mail Service <no-reply@example.com>\r\n";
+    $headers .= "From: SaltyComics Mail Service <no-reply@example.com>\r\n";
     $headers .= "Reply-To: no-reply@example.com\r\n";
 
     mail($email, $subject, $body, $headers);
