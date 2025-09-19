@@ -118,7 +118,7 @@ function fetchAndFormatComicData(): array {
     //get latest comic to determine the upper limit...
     $latestData = @file_get_contents('https://xkcd.com/info.0.json');
     if(!$latestData){
-        return ['html' => '<p>Could not fetch XKCD comic data.</p>', 'num' => null];
+        return ['altText' => '<p>Could not fetch XKCD comic data.</p>', 'num' => null, 'imgUrl' => '<p>Not Found 404</p>'];
     }
 
     $latestComic = json_decode($latestData, true);
@@ -130,7 +130,7 @@ function fetchAndFormatComicData(): array {
     //fetch the random comic JSON
     $comicData = @file_get_contents("https://xkcd.com/{$randomNum}/info.0.json");    /*used double quotes which allows special characters*/
     if(!$comicData){
-        return ['html' => '<p>Failed to retrieve comic.</p>', 'num' => null];
+        return ['altText' => '<p>Could not fetch XKCD comic data.</p>', 'num' => null, 'imgUrl' => '<p>Not Found 404</p>'];
     }
     
     $comic = json_decode($comicData, true);
@@ -149,7 +149,7 @@ function fetchAndFormatComicData(): array {
 function fetchLatestComic(int $item): array {
     $latestInfo = @file_get_contents('https://xkcd.com/info.0.json');
     if(!$latestInfo){
-        return ['num' => null, 'altText' => '<p>Could not fetch comic data.</p>'];
+        return ['num' => null, 'imgUrl' => '<p>Not Found</p>', 'altText' => 'Could not fetch comic data'];
     }
     $latestComic = json_decode($latestInfo, true);
     $maxNum = $latestComic['num'];  //determining the latest comic(max value)

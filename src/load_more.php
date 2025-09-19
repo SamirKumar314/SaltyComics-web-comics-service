@@ -3,7 +3,7 @@ require_once __DIR__ . '/functions.php';
 
 //fetching data from a function...
 $comics = [];
-for($i = 0; $i < 9; $i++){
+for($i = 0; $i < 3; $i++){
     $comics[] = fetchAndFormatComicData(); //contains the data required
 }
 

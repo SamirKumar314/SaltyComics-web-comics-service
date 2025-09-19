@@ -43,35 +43,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 </head>
 <body>
     <!-- top nav-bar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand mb-0 h1" href="index.php">
-                <img src="../assets/chatBubble.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                SALTYCOMICS
-            </a>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav nav-underline">
-                    <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="signup.php">Sign-up</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="unsub.php">Subscription</a>
-                    </li>
-                </ul>            
-            </div>
-        </div>
-    </nav>
+    <?php
+    $activePage = 'signup';
+    include __DIR__ . '/components/navbar.php';
+    ?>
+    
 
     <!-- input form -->
     <main class="container flex-grow-1">
         <h1 class="mt-5 mb-3">Sign-up to Salty Comics</h1>
         <form method="post">
             <div class="mb-3 mt-4 col-lg-7">
-                <label class="form-label mb-1">Email address:</label>
+                <label class="form-label mb-1" for="email">Email address:</label>
                 <input type="email" name="email" id="email" class="form-control form-control-lg border-2" placeholder="example@domain.com" required>
                 
                 <div class="form-text" id="basic-addon4">We'll send you interesting comics to your email once everyday.</div>
@@ -85,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <!-- Bootstrap JS & Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
-<?php include 'footer.html'; ?>
+<?php include __DIR__ . '/components/footer.html'; ?>
 </body>
 
 <?php

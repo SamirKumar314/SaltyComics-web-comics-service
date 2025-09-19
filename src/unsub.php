@@ -84,46 +84,28 @@ if(isset($_SESSION['message'])){
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
+    <!-- alert() messages with special characters allowed -->
+    <?php if(!empty($message)): ?>
+        <script>alert("<?= htmlspecialchars($message) ?>");</script>
+    <?php endif; ?>
 
-<!-- alert() messages with special characters allowed -->
-<?php if(!empty($message)): ?>
-    <script>alert("<?= htmlspecialchars($message) ?>");</script>
-<?php endif; ?>
 
     <!-- top nav-bar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand mb-0 h1" href="index.php">
-                <img src="../assets/chatBubble.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                SALTYCOMICS
-            </a>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav nav-underline">
-                    <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="signup.php">Sign-up</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" href="unsub.php">Subscription</a>
-                    </li>                                
-                </ul>            
-            </div>
-        </div>
-    </nav>
+    <?php
+        $activePage = 'unsub';
+        include __DIR__ . '/components/navbar.php';
+    ?>
+    
 
     <!-- input form -->
     <div class="container">
         <h1 class="mt-5 mb-0">Manage Subscription</h1>
-        <label class="form-text mb-3">To cancel your Subscription, follow the steps below:</label>
-
+        <span class="form-text mb-3">To cancel your Subscription, follow the steps below:</span>
 
         <!-- input->email=sends code -->
         <form method="post" class="col-lg-7">
             <div class="mb-3 mt-3">
-                <label class="form-label mb-1">Step 1: Email address</label>
+                <label class="form-label mb-1" for="email">Step 1: Email address</label>
                 <input type="email" name="email" id="email" class="form-control form-control-lg border-2" placeholder="example@domain.com" required>                
             </div>
             <button type="submit" name="send-code" id="send-code" class="btn btn-success">Send code</button>
@@ -132,7 +114,7 @@ if(isset($_SESSION['message'])){
         <!-- input->email+code=unsubscribe -->
         <form method="post" class="mb-3 col-lg-7">
             <div class="mb-2 mt-5">
-                <label class="form-label mb-1">Step 2: Confirm your Email and Verification code</label>
+                <label class="form-label mb-1" for="unsub-email">Step 2: Confirm your Email and Verification code</label>
                 <input type="email" name="unsub-email" id="unsub-email" class="form-control form-control-lg border-2" placeholder="Same email as above" required>
             </div>
             <div class="mb-3">
@@ -146,7 +128,7 @@ if(isset($_SESSION['message'])){
     <!-- Bootstrap JS & Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     
-<?php include 'footer.html'; ?>
+<?php include __DIR__ . '/components/footer.html'; ?>
 </body>
 
 </html>
